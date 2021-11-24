@@ -1,0 +1,95 @@
+<div class="container">
+  
+  <div class="create">
+    <!-- Sends a route query 'new' to dashboard page -->
+    <button [routerLink]="['/']" [queryParams]="{task: 'new'}">
+      <mat-icon aria-hidden="false">add</mat-icon>
+    </button>
+  </div>
+
+  <div class="search-bar" [formGroup]="form">
+    <input 
+      type="text" 
+      placeholder="Search tasks..."
+      formControlName="search"
+    >
+    <button 
+      class="icon-container"
+      (click)="handleSearchBtnClick()"
+    >
+      <mat-icon aria-hidden="false">{{ form.get('search').value ? 'close' : 'search' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="btn-container toggle-container">
+    <button 
+      class="toggle-btn" 
+      (click)="handleToggleFilter()"
+      [ngClass]="{'reg-active':queryFilter}"
+    >
+      <span>Filter</span>
+      <mat-icon aria-hidden="false">{{ filterOpen ? "keyboard_arrow_up" : "keyboard_arrow_down" }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- filter options -->
+  <div class="filter-options" *ngIf="filterOpen">
+    <button 
+      class="option-btn lv1"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'low'}"
+      [ngClass]="{'lv1-active':queryFilter === 'low'}"
+    ><span>Low</span></button>
+    <button 
+      class="option-btn lv2"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'medium'}"
+      [ngClass]="{'lv2-active':queryFilter === 'medium'}"
+    ><span>Medium</span></button>
+    <button 
+      class="option-btn lv3"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'high'}"
+      [ngClass]="{'lv3-active':queryFilter === 'high'}"
+    ><span>High</span></button>
+    <button 
+      class="option-btn lv4"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'needs-attention'}"
+      [ngClass]="{'lv4-active':queryFilter === 'needs-attention'}"
+    ><span>Needs&nbsp;attention</span></button>
+
+    <button 
+      class="option-btn reg"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'assigned'}"
+      [ngClass]="{'reg-active':queryFilter === 'assigned'}"
+    ><span>Assigned</span></button>
+    <button 
+      class="option-btn reg"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'committed'}"
+      [ngClass]="{'reg-active':queryFilter === 'committed'}"
+    ><span>Committed</span></button>
+    <button 
+      class="option-btn reg"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'in-progress'}"
+      [ngClass]="{'reg-active':queryFilter === 'in-progress'}"
+    ><span>In&nbsp;Progress</span></button>
+    <button 
+      class="option-btn reg"
+      [routerLink]="['/']" 
+      [queryParams]="{filter: 'completed'}"
+      [ngClass]="{'reg-active':queryFilter === 'completed'}"
+    ><span>Completed</span></button>
+  </div>
+
+  <div class="btn-container clear-container" *ngIf="queryFilter">
+    <button [routerLink]="['/']">
+      <span>Clear</span>
+      <mat-icon aria-hidden="false">close</mat-icon>
+    </button>
+  </div>
+
+</div>

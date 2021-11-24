@@ -1,0 +1,66 @@
+<!-- <router-outlet></router-outlet> -->
+<div class="container">
+  <div class="content">
+    <!-- Action -->
+    <app-action (search)="find($event)"></app-action>
+
+    <!-- TODOS -->
+    <div class="todo-body">
+<!-- Todo columns -->
+    <div class="todo-column">
+      <div class="title">Assigned</div>
+      <div class="column-content">
+        <!-- card -->
+        <div *ngFor="let task of (assignedTodosRx | async )">
+          <app-todo-card [task]="task"></app-todo-card>
+        </div>
+        <div class="col-empty" *ngIf="!(assignedTodosRx | async ).length">Nothing to show here</div>
+      </div>
+    </div>
+
+    <div class="todo-column">
+      <div class="title">Committed</div>
+      <div class="column-content">
+        <!-- card -->
+        <div *ngFor="let task of (committedTodosRx | async )">
+          <app-todo-card [task]="task"></app-todo-card>
+        </div>
+        <div class="col-empty" *ngIf="!(committedTodosRx | async ).length">Nothing to show here</div>
+      </div>
+    </div>
+
+    <div class="todo-column">
+      <div class="title">In progress</div>
+      <div class="column-content">
+        <!-- card -->
+        <div *ngFor="let task of (inProgressTodosRx | async )">
+          <app-todo-card [task]="task"></app-todo-card>
+        </div>
+        <div class="col-empty" *ngIf="!(inProgressTodosRx | async ).length">Nothing to show here</div>
+      </div>
+    </div>
+
+    <div class="todo-column">
+      <div class="title">Completed</div>
+      <div class="column-content">
+        <!-- card -->
+        <div *ngFor="let task of (completedTodosRx | async )">
+          <app-todo-card [task]="task"></app-todo-card>
+        </div>
+        <div class="col-empty" *ngIf="!(completedTodosRx | async ).length">Nothing to show here</div>
+      </div>
+    </div>
+    </div>
+  
+    <!--  Create Todo Modal  -->
+    <div *ngIf="createModalActive">
+       <app-create-todo [whereQuery]="whereQuery"></app-create-todo>
+    </div>
+
+    <!-- Edit Todo Modal -->
+    <div *ngIf="editModal.active">
+      <app-edit-todo [taskId]="editModal.id" [whereQuery]="whereQuery"></app-edit-todo>
+    </div>
+
+  </div>
+</div>

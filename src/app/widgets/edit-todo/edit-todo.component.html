@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="modal">
+
+    <div class="content" *ngIf="!loading" [formGroup]="form" (ngSubmit)="handleSubmit()">
+
+      <div class="header">
+          <input 
+            type="text" 
+            placeholder="Title..." 
+            formControlName="title" 
+            required
+          />
+          <!-- close button -->
+          <button (click)="handleGoBack()" class="close-btn">
+              <mat-icon aria-hidden="false">close</mat-icon>
+          </button>
+      </div>
+
+      <div class="body">
+        <div class="description">
+          <div>Description:</div>
+          <textarea 
+            placeholder="Describe your task..."
+            formControlName="description"
+            required
+          ></textarea>
+        </div>
+        <div class="action">
+
+          <div>
+            <!-- Type -->
+            <div class="actions-container">
+              <div class="label">Type</div>
+              <div class="select-container">
+                <div class="icon">
+                  <mat-icon *ngIf="task.type === 1" style="color: #9DA8B5;" aria-hidden="false">notes</mat-icon>
+                  <mat-icon *ngIf="task.type === 2" style="color: #654321;" aria-hidden="false">bug_report</mat-icon>
+                  <mat-icon *ngIf="task.type === 3" style="color: #87a27c;" aria-hidden="false">terrain</mat-icon>
+                  <mat-icon *ngIf="task.type === 4" style="color: #4CADE8;" aria-hidden="false">alarm</mat-icon>
+                </div>
+                <select formControlName="type" required>
+                  <option value=1 ng-selected="task.type === 1">General</option>
+                  <option value=2 ng-selected="task.type === 2">Bug</option>
+                  <option value=3 ng-selected="task.type === 3">Goal</option>
+                  <option value=4 ng-selected="task.type === 4">Reminder</option>
+                </select>
+              </div>
+            </div>
+            <!-- Priority -->
+            <div class="actions-container">
+              <div class="label">Priority</div>
+              <div class="select-container">
+                <div class="icon">
+                  <mat-icon *ngIf="task.priority === 1" style="color: #2CD100;" aria-hidden="false">arrow_downward</mat-icon>
+                  <mat-icon *ngIf="task.priority === 2" style="color: #4CADE8;"  aria-hidden="false">horizontal_rule</mat-icon>
+                  <mat-icon *ngIf="task.priority === 3" style="color: #FF9C22;"  aria-hidden="false">arrow_upward</mat-icon>
+                  <mat-icon *ngIf="task.priority === 4" style="color: #D93B34;"  aria-hidden="false">error_outline</mat-icon>
+                </div>
+                <select formControlName="priority" required>
+                  <option value=1 ng-selected="task.priority === 1">Low</option>
+                  <option value=2 ng-selected="task.priority === 2">Medium</option>
+                  <option value=3 ng-selected="task.priority === 3">High</option>
+                  <option value=4 ng-selected="task.priority === 4">Needs Attention</option>
+                </select>
+              </div>
+            </div>
+            <!-- Progress -->
+            <div class="actions-container">
+              <div class="label">Progress</div>
+              <div class="select-container">
+                <select formControlName="progress" required>
+                  <option value=1 ng-selected="task.progress === 1">Assigned</option>
+                  <option value=2 ng-selected="task.progress === 2">Committed</option>
+                  <option value=3 ng-selected="task.progress === 3">In Progress</option>
+                  <option value=4 ng-selected="task.progress === 4">Completed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="dates">
+              <div>Created&nbsp;{{ handleConvertDate(task.created_at) }}</div>
+              <div *ngIf="task.created_at !== task.updated_at">Updated&nbsp;{{ handleTimeAgo(task.updated_at) }}</div>
+            </div>
+            <div>
+
+            </div>
+          </div>
+          
+          
+
+        </div>
+      </div>
+
+    </div>
+
+    
+    <!-- loader -->
+    <div *ngIf="loading" class="loader"><div></div></div>
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<!-- Sends a route query 'task id' to dashboard page -->
+<div class="card" [routerLink]="['/']" [queryParams]="{task: task.id}">
+  <div class="draggable"></div>
+
+  <div class="content">
+    <div class="title">{{ task.title }}</div>
+    <div class="description">{{ task.description }}</div>
+
+    <div class="widgets">
+      <div>
+        <div class="badge lv1" *ngIf="task.type === 1"><mat-icon style="color: #9DA8B5;" aria-hidden="false">notes</mat-icon></div>
+        <div class="badge lv1" *ngIf="task.type === 2"><mat-icon style="color: #654321;" aria-hidden="false">bug_report</mat-icon></div>
+        <div class="badge lv3" *ngIf="task.type === 3"><mat-icon style="color: #87a27c;" aria-hidden="false">terrain</mat-icon></div>
+        <div class="badge lv3" *ngIf="task.type === 4"><mat-icon style="color: #4CADE8;" aria-hidden="false">alarm</mat-icon></div>
+      </div>
+      <div class="priorities">
+        <div class="badge" *ngIf="task.priority === 1"><mat-icon style="color: #2CD100;" aria-hidden="false">arrow_downward</mat-icon></div>
+        <div class="badge" *ngIf="task.priority === 2"><mat-icon style="color: #4CADE8;"  aria-hidden="false">horizontal_rule</mat-icon></div>
+        <div class="badge" *ngIf="task.priority === 3"><mat-icon style="color: #FF9C22;"  aria-hidden="false">arrow_upward</mat-icon></div>
+        <div class="badge" *ngIf="task.priority === 4"><mat-icon style="color: #D93B34;"  aria-hidden="false">error_outline</mat-icon></div>
+      </div>
+
+      <div class="time" *ngIf="task.created_at !== task.updated_at">
+        <mat-icon aria-hidden="false">query_builder</mat-icon>
+        <div>Updated&nbsp;{{ handleTimeAgo(task.updated_at) }}</div>
+      </div>
+    </div>
+  </div>
+  
+</div>

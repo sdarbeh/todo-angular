@@ -1,0 +1,121 @@
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: darken(rgb(244,245,247), 50);
+    .create {
+        height: 100%;
+        width: 40px;
+        button {
+            transition: .2s ease-in;
+            border-radius: 50%;
+            background-color: rgb(244,245,247);
+            width: 100%;
+            height: 100%;
+        }
+        &:hover {
+            button {
+                background-color: darken(rgb(244,245,247), 5);
+            }
+        }
+    }
+    .search-bar {
+        border-radius: 10px;
+        width: 400px;
+        height: 100%;
+        background-color: rgb(244,245,247);
+        margin: 0 20px;
+        position: relative;
+        .icon-container, input {
+            position: absolute;
+            top: 0;
+            height: 100%;
+        }
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-self: center;
+            right: 5px;
+            z-index: 1;
+        }
+        input {
+            border-radius: 10px;
+            padding: 5px 30px 5px 10px;
+            border: 1px solid darken(rgb(244,245,247), 5);
+            width: calc(100% - 42px);
+            height: calc(100% - 12px);
+            &:focus {
+                border-color: #0097D9;
+            }
+        }
+    }
+    .btn-container {
+        height: 100%;
+        button {
+            height: 100%;
+            padding: 3px 10px;
+            font-weight: normal;
+            border-radius: 10px;
+        }
+    }
+    .toggle-container .mat-icon {
+        margin-left: 7px;
+    }
+    .toggle-btn:hover {
+        background-color: rgb(244,245,247);
+    }
+    .clear-container {
+        margin-left: 10px;
+        .mat-icon {
+            margin-left: 3px;
+            transform: scale(.7);
+        }
+    }
+    .filter-options {
+        position: absolute;
+        left: 0;
+        bottom: -40px;
+        display: flex;
+        align-items: center;
+        .option-btn {
+            margin-right: 5px;
+            padding: 5px 12px;
+            border-radius: 10px;
+        }
+    }
+    .reg:hover {
+        background-color: rgb(244,245,247);
+    }
+    .reg-active {
+        background-color: rgba(244,245,247,.9);
+    }
+
+    .lv1:hover { 
+        background-color: rgba(44,209,0,.3);
+    }
+    .lv1-active {
+        background-color: rgba(44,209,0,.2);
+    }
+
+    .lv2:hover  { 
+        background-color: rgba(239,239,0,.3);
+    }
+    .lv2-active {
+        background-color: rgba(239,239,0,.2);
+    }
+
+    .lv3:hover  { 
+        background-color: rgba(245,164,0,.3);
+    }
+    .lv3-active {
+        background-color: rgba(245,164,0,.2);
+    }
+
+    .lv4:hover  { 
+        background-color: rgba(255,51,51,.3);
+    }
+    .lv4-active {
+        background-color: rgba(255,51,51,.2);
+    }
+}

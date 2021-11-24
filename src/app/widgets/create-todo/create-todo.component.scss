@@ -1,0 +1,142 @@
+.container {
+    position: fixed;
+    background-color: rgba(0,0,0,.4);
+    &, .loader {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal {
+        background-color: white;
+        padding: 20px 20px 20px 15px;
+        width: calc(700px - 40px);
+        height: calc(680px - 40px);
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+    }
+    .content {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: repeat(2, 40px) 1fr;
+        row-gap: 20px;
+        
+    }
+    .modal-title {
+        position: relative;
+        h1 {
+            margin: 0;
+            text-align: center;
+            color: darken(rgb(244,245,247), 70);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .close-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .input-title {
+        width: 100%;
+        &, input {
+            height: 100%;
+        }
+        input {
+            width: calc(100% - 10px - 4px);
+            font-size: 1.3rem;
+            padding: 0 5px;
+            &:focus {
+                border-color: rgba($color: #0097D9, $alpha: .4)
+            }
+        }
+    }
+    input, textarea {
+        border: 2px solid transparent;
+    }
+    textarea {
+        padding: 5px;
+        width: calc(100% - 4px - 10px);
+        height: calc(100% - 30px - 4px - 10px);
+        font-size: 1.1rem;
+        &:focus {
+           border: 2px solid darken(rgb(244,245,247), 2); 
+           &:hover {
+             background-color: white;  
+           }
+        }
+    }
+    input, textarea, .select-container, .close-btn {
+        border-radius: 5px;
+        &:hover {
+            background-color: rgb(244,245,247);
+        }
+    }
+    input, textarea, select {
+        color: darken(rgb(244,245,247), 60);
+    }
+    .header .title, .close-btn, .description div {
+        font-weight: 600;
+        color: darken(rgb(244,245,247), 60);
+    }
+    .body {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        column-gap: 15px;
+    }
+    .description {
+        div {
+            font-size: .9rem;
+            margin: 0 0 5px 5px;
+        }
+    }
+    .action {
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .actions-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .label {
+            font-weight: 600;
+            color: darken(rgb(244,245,247), 60);
+        }
+        .select-container {
+            padding: 10px;
+            min-width: calc(180px - 20px);
+        }
+        .select-container, select {
+            cursor: pointer;
+        }
+        select {
+            width: 100%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-size: 1.1rem;
+        }
+    }
+    .save-btn {
+        margin: auto 0 0 0;
+        button {
+            margin: 0 0 0 auto;
+            width: 200px;
+            height: 40px;
+            border-radius: 3px;
+            background-color: #0097D9;
+            font-weight: 600;
+        }
+    }
+    
+}

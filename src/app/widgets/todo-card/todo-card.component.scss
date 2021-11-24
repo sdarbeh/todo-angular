@@ -1,0 +1,56 @@
+.card {
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(9,30,66,.25);
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    column-gap: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: .2s ease-in;
+    cursor: grab;
+    &:hover {
+        background-color: darken(rgb(244,245,247), 7);
+    }
+    .draggable {
+        border-radius: 10px;
+        background-color: darken(rgb(244,245,247), 5);
+    }
+    .title {
+        font-size: .9rem;
+    }
+    .description {
+        margin: 5px 0;
+    }
+    .badge {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+    .mat-icon {
+        transform: scale(.95);
+    }
+    .widgets {
+        padding: 5px 0 10px 0;
+    }
+    .widgets, .time {
+        display: flex;
+        align-items: center;
+    }
+    .priorities {
+        margin: 0 10px;
+    }
+    .title, .new {
+        margin: 0 0 0 auto;
+        .mat-icon {
+            transform: scale(.8);
+        }
+    }
+    .time {
+        color: darken(rgb(244,245,247), 40);
+        opacity: 60%;
+    }
+    .new {
+        color: blue;
+    }
+}
